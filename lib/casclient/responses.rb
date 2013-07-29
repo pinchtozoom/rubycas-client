@@ -65,12 +65,18 @@ module CASClient
         end
 
         @extra_attributes = {}
-        @xml.elements.to_a('//cas:authenticationSuccess/cas:attributes/cas:attribute/* | //cas:authenticationSuccess/cas:attributes/* | //cas:authenticationSuccess/*[local-name() != \'proxies\' and local-name() != \'proxyGrantingTicket\' and local-name() != \'user\' and local-name() != \'attributes\']').each do |el|
+        @xml.elements.to_a('//cas:authenticationSuccess/cas:attributes/* | //cas:authenticationSuccess/*[local-name() != \'proxies\' and local-name() != \'proxyGrantingTicket\' and local-name() != \'user\' and local-name() != \'attributes\']').each do |el|
           inner_text = el.cdatas.length > 0 ? el.cdatas.join('') : el.text
           name = el.name
           unless (attrs = el.attributes).empty?
             name       = attrs['name']
             inner_text = attrs['value']
+          end
+          
+          # Look fo the specific elements and if they exist add them into the extra attributes
+          if el.elements.to_a('cas:name').first.text.length > 0 && el.elements.to_a('cas:value').first.text.length > 0
+            name       = el.elements.to_a('cas:name').first.text
+            inner_text = el.elements.to_a('cas:value').first.text
           end
           
           # Only add the attribute if there is somehing in it!

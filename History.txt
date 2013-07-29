@@ -1,5 +1,10 @@
 = RubyCAS-Client Changelog
 
+== Version 2.3.10.rc2 :: 2013-07-29
+
+* Bug Fixes
+  * Added in specific attribute search for name and value to ensure additional attributes are correctly set up
+
 == Version 2.3.10.rc1 :: 2013-03-18
 
 * Bug Fixes
