@@ -3,7 +3,7 @@ $LOAD_PATH << File.expand_path("../lib", __FILE__)
 require 'rubycas-client/version'
 
 Gem::Specification.new do |gem|
-  gem.authors = ["Matt Campbell", "Matt Zukowski", "Matt Walker", "Matt Campbell"]
+  gem.authors = ["Matt Campbell", "Matt Zukowski", "Matt Walker", "Matt Campbell", "David Hopkinson"]
   gem.email         = ["matt@soupmatt.com"]
   gem.summary = %q{Client library for the Central Authentication Service (CAS) protocol.}
   gem.description = %q{Client library for the Central Authentication Service (CAS) protocol.}
